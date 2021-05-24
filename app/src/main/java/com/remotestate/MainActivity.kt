@@ -54,11 +54,9 @@ class MainActivity : AppCompatActivity() {
             ) == PackageManager.PERMISSION_GRANTED -> {
                 // You can use the API that requires the permission.
                 Toast.makeText(MainActivity@ this, "Permission granted", Toast.LENGTH_LONG).show()
-                startMyService()
             }
             else -> {
                 // You can directly ask for the permission.
-                Toast.makeText(MainActivity@ this, "Permission not  granted", Toast.LENGTH_LONG).show()
                 if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
                     requestPermissions(
                             arrayOf(Manifest.permission.ACCESS_COARSE_LOCATION, Manifest.permission.ACCESS_COARSE_LOCATION),
