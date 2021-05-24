@@ -53,7 +53,7 @@ class MainActivity : AppCompatActivity() {
                     Manifest.permission.ACCESS_COARSE_LOCATION
             ) == PackageManager.PERMISSION_GRANTED -> {
                 // You can use the API that requires the permission.
-                Toast.makeText(MainActivity@ this, "Permission granted", Toast.LENGTH_LONG).show()
+                //Toast.makeText(MainActivity@ this, "Permission granted", Toast.LENGTH_LONG).show()
             }
             else -> {
                 // You can directly ask for the permission.

@@ -2,8 +2,10 @@ package com.remotestate;
 
 import android.app.Application;
 import android.os.AsyncTask;
+import android.util.Log;
 
 import androidx.lifecycle.LiveData;
+import androidx.lifecycle.MutableLiveData;
 
 import com.remotestate.database.LocationDao;
 import com.remotestate.database.LocationDatabase;
@@ -14,12 +16,12 @@ import java.util.List;
 public class LocationRepository {
 
     private LocationDao locationDao;
-    private LiveData<List<LocationTable>> allNotes;
+    private LiveData<List<LocationTable>> allLocation;
 
     public LocationRepository(Application application) { //application is subclass of context
         LocationDatabase locationDatabase = LocationDatabase.getInstance(application);
         locationDao = locationDatabase.locationDao();
-        allNotes = locationDao.getAllLatLng();
+        allLocation = locationDao.getAllLatLng(50,0);
     }
 
     //methods for database operations :-
@@ -39,8 +41,8 @@ public class LocationRepository {
         new DeleteAllNotesAsyncTask(locationDao).execute();
     }
 
-    public LiveData<List<LocationTable>> getAllNotes() {
-        return allNotes;
+    public LiveData<List<LocationTable>> getAllLatLngs() {
+        return allLocation;
     }
 
 

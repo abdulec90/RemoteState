@@ -1,6 +1,7 @@
 package com.remotestate
 
 import android.os.Bundle
+import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
@@ -17,9 +18,11 @@ class LogsActivity : AppCompatActivity() {
         setContentView(R.layout.activity_logs)
 
         locationViewModel = ViewModelProvider(this)[LocationViewModel::class.java]
-        findViewById<RecyclerView>(R.id.locationRecyclerView).layoutManager=LinearLayoutManager(LogsActivity@this)
+        findViewById<RecyclerView>(R.id.locationRecyclerView).layoutManager=LinearLayoutManager(
+            LogsActivity@ this
+        )
         locationViewModel.allNotes.observe(this, Observer {
-
+            Log.v("Location Service : ", "all notes size : " + it.size)
             val locationAdapter: LocationRecyclerAdapter =
                 LocationRecyclerAdapter(LogsActivity@ this, it)
 

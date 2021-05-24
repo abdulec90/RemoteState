@@ -25,8 +25,8 @@ public interface LocationDao {
     @Query("DELETE FROM location_table")
     void DeleteAllNotes();
 
-    @Query("SELECT * FROM location_table")
-    LiveData<List<LocationTable>> getAllLatLng();  //updates and returns
+    @Query("SELECT * FROM location_table LIMIT :limit OFFSET :offset")
+    LiveData<List<LocationTable>> getAllLatLng(int limit,int offset);  //updates and returns
 
 
 }
